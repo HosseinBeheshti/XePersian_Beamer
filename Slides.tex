@@ -45,7 +45,106 @@
 \frametitle{سیگنال‌های دیکشنری تنک}
 
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%
+‎%%%%%%%%%%%%%%%%%%%%%%%%
+‎%%%%%%%%%%%%%%%%%%%%%%%%
+‎%%%%%%%%%%%%%%%%%%%%%%%%‎
 
+\section{هندسه‌ی ابعاد بالا‎\hfill}‎
+‎
+‎\begin{frame}‎
+\frametitle{هندسه‌ی ابعاد بالا}
+
+‎\end{frame}‎‎
+
+‎\begin{frame}‎
+\frametitle{هندسه‌ی ابعاد بالا}
+\framesubtitle{\lr{Random Hyperplane Tessellations}}
+‎\end{frame}‎‎
+‎
+‎‎\begin{frame}‎
+\frametitle{هندسه‌ی ابعاد بالا}
+\framesubtitle{\lr{Random Hyperplane Tessellations}}
+‎\end{frame}‎‎
+
+‎%%%%%%%%%%%%%%%%%%%%%%%%
+‎%%%%%%%%%%%%%%%%%%%%%%%%
+‎%%%%%%%%%%%%%%%%%%%%%%%%
+‎%%%%%%%%%%%%%%%%%%%%%%%%‎
+
+\section{‏الگوریتم پیشنهادی‎\hfill}‎
+‎
+‎\begin{frame}‎
+\frametitle{‎‏‏مدل سیستم}
+
+‎\end{frame}‎
+‎\begin{frame}‎
+\frametitle{‎‏آستانه‌ی ابعاد بالا}
+‎‎\begin{latin}‎‎
+\begin{algorithm}
+	\caption{$ \Phi $: High dimension threshold generator}
+	\label{alg:HDTG}
+	\begin{algorithmic}[1]
+		\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+		\renewcommand{\algorithmicensure}{\textbf{Output:}}
+		\REQUIRE Mapping matrix $ \bm{A} $, number of measurements $ b $, dithers variance $ \sigma^{2} $, signal estimation $ \hat{\bm{f}} $.
+		\ENSURE High dimension threshold vector $\bm{\varphi}\in \R^{b}$.
+		\STATE $ \bm{\tau}\sim N(0,\sigma^{2}\bm{I}_{b} ) $
+		\STATE  $ \bm{\varphi}=\bm{A}\hat{\bm{f}}+\bm{\tau} $
+		\RETURN $ \bm{\varphi} $
+	\end{algorithmic} 
+\end{algorithm}
+‎\end{latin}‎
+‎\end{frame}‎
+‎‎
+‎\begin{frame}‎
+\frametitle{‎‏‏بازیابی تک مرحله‌ای}
+
+‎\end{frame}‎
+
+‎\begin{frame}‎
+\frametitle{‎‏‏نمونه‌برداری وفقی}
+‎\begin{latin}‎
+‎\begin{algorithm}
+	\caption{$ \mathcal{Q} $: Adaptive Quantization}
+	\label{alg:AQ}
+	\begin{algorithmic}[1]
+		\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+		\renewcommand{\algorithmicensure}{\textbf{Output:}}
+		\REQUIRE Dictionary $ \bm{D}\in\R^{n\times N} $,measurement matrix $ \bm{A}\in\R^{m\times n} $, linear measurement $ \bm{Af}\in \R^{m} $, norm estimation $ \norm{\bm{f}}_{2}\leq r $, number of blocks $ L $.
+		\ENSURE  Quantized measurements $ \bm{y} \in \lbrace\pm 1\rbrace^{m} $, high dimension thresholds $ \bm{\varphi} \in \R^{m} $
+		\\ \textit{Initialisation} : $ \bm{f}_{0}\leftarrow \bm{0} $, $ b = ‎\lfloor‎\frac{m}{L}‎\rfloor $, $ \bm{A}^{(i)}\in \R^{b\times m}  $
+		\FOR {$i = 1,\cdots,L$}
+		\STATE $\bm{\varphi}^{\left(i\right)}\leftarrow \Phi(\bm{A}^{(i)},b,2^{1-t}r,\bm{f}_{i}) $
+		\STATE $ \bm{y}^{\left(i\right)} = \text{sign}\left(\bm{A}^{(i)}\bm{f}-\bm{\varphi}^{\left(i\right)}\right)$
+		\STATE $ \bm{f}_{i+1}\leftarrow \varDelta\left(\bm{D},\bm{A}^{(i)},\bm{y}^{\left(i\right)},\bm{\varphi}^{\left(i\right)},\bm{r}‎_{t}\right) $
+		\ENDFOR
+		\RETURN $ \bm{y}^{\left(i\right)},\bm{\varphi}^{\left(i\right)} $ for $ i=1,\cdots,L $
+	\end{algorithmic} 
+\end{algorithm}
+\end{latin}‎
+‎\end{frame}‎
+‎
+‎\begin{frame}‎
+\frametitle{بازیابی وفقی}
+‎\begin{latin}‎
+‎\begin{algorithm}
+	\caption{$ \mathcal{R} $: Adaptive Recovery}
+	\label{alg:AR}
+	\begin{algorithmic}[1]
+		\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+		\renewcommand{\algorithmicensure}{\textbf{Output:}}
+		\REQUIRE Dictionary $ \bm{D}\in\R^{n\times N} $,measurement matrix $ \bm{A}\in\R^{m\times n} $,quantized measurements $ \bm{y} \in \lbrace\pm 1\rbrace^{m} $, high dimension thresholds $ \bm{\varphi}\in\R^{m} $, norm estimation $ \norm{\bm{f}}_{2}\leq r $, number of blocks $ L $.
+		\ENSURE  Estimated vector $ \hat{\bm{f}}\in \R^{n} $.
+		\\ \textit{Initialisation} :  $ b = ‎\lfloor‎\frac{m}{L}‎\rfloor‎ $, $ \bm{A}^{(i)}\in \R^{b\times m}$, $ \bm{y}^{\left(i\right)} \lbrace\pm 1\rbrace^{b}$, $\bm{\varphi}^{\left(i\right)}\in \R^{b} $
+		\FOR {$i = 1,\cdots,L$}
+		\STATE $ \bm{f}_{i}\leftarrow \varDelta\left(\bm{D},\bm{A}^{(i)},\bm{y}^{\left(i\right)},\bm{\varphi}^{\left(i\right)},\bm{r}‎_{t}‎\right) $
+		\ENDFOR
+		\RETURN $ \bm{f}_{L} $
+	\end{algorithmic} 
+\end{algorithm}
+\end{latin}‎
+‎\end{frame}‎
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,38 +162,3 @@
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\begin{algorithm}
-	\caption{$ \mathcal{R} $: Adaptive Recovery}
-	\label{alg:AR}
-	\begin{algorithmic}[1]
-		 \textbf{Input:} Dictionary 
-		\textbf{Input:}  Estimated vector fgfdhgh
-		\FOR i =1
-		\\ \textit{Initialisation} ffh
-		\STATE fhfr
-		\ENDFOR
-		\textbf{Return:} gfhf
-	\end{algorithmic} 
-\end{algorithm}
-\end{frame}
-
-
-
-\begin{latin}
-\begin{frame}
-
-\begin{algorithm}[H]
-\begin{algorithmic}[1]
-\FOR{$i=1$ to $N$}
-\FOR{$j=1$ to $JJJJ$}
-\STATE $energy[i*JJJ+j] =$ 
-$ interpolate(AAA[i*JJJ+j], ZZZ)$
-\ENDFOR
-\ENDFOR
-\end{algorithmic}
-\caption{pseudocode for the calculation of }
-\label{alg:seq}
-\end{algorithm}
-\end{frame}
-\end{latin}
