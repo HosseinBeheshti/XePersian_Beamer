@@ -23,20 +23,27 @@
 \include{tashih}
 \include{commands}
 
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+\setbeamercolor{footline}{fg=blue}
+\setbeamerfont{footline}{series=\bfseries}
+
 \begin{document}
 
-\title{یک اسلاید نمونه}
-\subtitle{زیرعنوان اسلاید}
-\author{نام نویسنده}
+\title{بازیابی وفقی سیگنال‌های دیکشنری تنک با استفاده از نمونه‌های باینری}
+\subtitle{}
+\author{حسین بهشتی}
 
 
 \begin{frame}
 \maketitle
 \end{frame}
 
-\begin{frame}
-\ptext[1-2]
-\end{frame}
 %%% زدن \hfill  در دستور \section لازم است.
 %%%%%%%%%%%%%%%
 \include{Slides}
