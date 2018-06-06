@@ -1,0 +1,59 @@
+% Tikz File 'mytikz.tex'
+\documentclass{standalone}
+
+%\usetikzlibrary{...}
+\begin{document}
+\tikzstyle{block} = [draw, fill=blue!20, rectangle, 
+minimum height=3em, minimum width=6em]
+\tikzstyle{sum} = [draw, fill=blue!20, circle, node distance=2cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+\begin{tikzpicture}[auto, node distance=2cm,>=latex']
+% We start by placing the blocks
+\node [input, name=input] {};
+
+\node [block, right of=input,node distance=3cm] (CoeS) {
+	$\begin{array}{c}
+	\bm{x} \\
+	\bm{D}^{\ast}\bm{f} 
+	\end{array}	$};
+
+\node [block, right of=CoeS,node distance=4cm] (SigS) {$ \bm{f} $};
+
+\node [block, right of=SigS,node distance=3cm] (system) {$ \bm{A}^{(i)}\bm{f} $};
+
+\node [sum, right of=system] (sum) {};
+    
+\node [block, right of=sum,node distance=3cm] (Sign) { $ \text{sign}\left(\bm{A}^{(i)}\bm{f}- \bm{\varphi}^{(i)}\right) $};
+
+\node [block, below of=Sign,node distance=1.5cm] (ATh) { $ \bm{\varphi}^{(i)} $};
+
+\node [output, right of=Sign] (yTemp) {};
+\node [output, right of=yTemp] (yOut) {};
+
+% We draw an edge between the controller and system block to 
+% calculate the coordinate u. We need it to place the measurement block. 
+\draw [->] (CoeS) -- node {$\rightarrow\bm{D}$} (SigS);
+
+\draw [->] (SigS) -- node {$\bm{D}^{\ast}\leftarrow$} (CoeS);
+
+\draw [->] (SigS) -- node {$\bm{A}$} (system);
+
+\draw [draw,->] (system) -- node {$+$} (sum);
+
+\draw [draw,->] (sum) -- node {} (Sign);
+
+\draw [draw,-] (Sign) -- node {} (yTemp);
+
+\draw [draw,->] (yTemp) -- node {$ \bm{y} $} (yOut);
+
+
+\draw [->] (yTemp) |- (ATh);
+
+\draw [->] (ATh) -| node[pos=0.99] {$-$} node [near end] {} (sum);
+
+%\draw [->] (controller) -- node[name=u] {$u$} (system);
+\end{tikzpicture}
+
+\end{document}
