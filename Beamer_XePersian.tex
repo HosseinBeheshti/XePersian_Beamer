@@ -1,7 +1,6 @@
 \documentclass{beamer}
 
 \usetheme{Warsaw}
-
 %\usetheme{Singapore}
 %%% اینها هنوز کار نمی‌کنند.
 %%\usetheme{Bergen}
@@ -22,18 +21,23 @@
 \usepackage{standalone}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows}
-\usepackage[ruled]{algorithm}
-\usepackage{algorithmic}
+\usepackage{algorithm,algorithmic}
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
 \usepackage{standalone}
 \usepackage{bm}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usefonttheme{serif}
+\usefonttheme[onlymath]{serif}
 
 \usepackage{ptext}
 \usepackage{xepersian}
 \settextfont{Yas}
+
+
 
 \include{tashih}
 \include{commands}
