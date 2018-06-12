@@ -11,7 +11,7 @@
 
 \begin{frame}
 \frametitle{حسگری فشرده}
-$\bm{x}^{2}$
+
 \end{frame}
 
 \begin{frame}
@@ -60,6 +60,7 @@ $\bm{x}^{2}$
 \begin{frame}
 \frametitle{هندسه‌ی ابعاد بالا}
 \framesubtitle{\lr{Random Hyperplane Tessellations}}
+
 \end{frame}
 
 \begin{frame}
@@ -77,27 +78,18 @@ $\bm{x}^{2}$
 \begin{frame}
 \frametitle{مدل سیستم}
 
-\begin{figure}[t]
+\begin{figure}
 	\centering
 	\includestandalone[scale=0.6]{Images/AdaptiveBD}
-	%\input{AdaptiveBD}
-	\caption{میی}
-	\label{fig:AdaptiveBD}
 \end{figure}
+
 \end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{الگوریتم پیشنهادی\hfill}
 
 \begin{frame}
-\frametitle{مدل سیستم}
+\frametitle{بازیابی تک مرحله‌ای}
 
 \end{frame}
+
 \begin{frame}
 \frametitle{آستانه‌ی ابعاد بالا}
 \begin{latin}
@@ -107,6 +99,9 @@ $\bm{x}^{2}$
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 \REQUIRE Mapping matrix $ \bm{A} $, number of measurements $ b $, dithers variance $ \sigma^{2} $, signal estimation $ \hat{\bm{f}} $.
 \ENSURE High dimension threshold vector $\bm{\varphi}\in \R^{b}$.
+\STATE $ \bm{\tau}\sim N(0,\sigma^{2}\bm{I}_{b} ) $
+\STATE  $ \bm{\varphi}=\bm{A}\hat{\bm{f}}+\bm{\tau} $
+\RETURN $ \bm{\varphi} $
 \end{algorithmic} 
 \caption{ $\Phi$ : High dimension threshold generator}
 \label{alg:HDTG}
@@ -115,20 +110,41 @@ $\bm{x}^{2}$
 \end{frame}
 
 \begin{frame}
-\frametitle{آستانه‌ی ابعاد بالا}
+\frametitle{نمونه‌برداری وفقی}
 \begin{latin}
 \begin{algorithm}[H]
 \begin{algorithmic}[1]
-\renewcommand{\algorithmicrequire}{\textbf{Input:}}
-\renewcommand{\algorithmicensure}{\textbf{Output:}}
-\REQUIRE Mapping matrix $ \bm{A} $, number of measurements $ b $, dithers variance $ \sigma^{2} $, signal estimation $ \hat{\bm{f}} $.
-\ENSURE not Pizza 
-\FOR{$j=1$ to $N$}
-\STATE Add Pineapple on Pizza
+\REQUIRE Dictionary $ \bm{D}\in\R^{n\times N} $,measurement matrix $ \bm{A}\in\R^{m\times n} $, linear measurement $ \bm{Af}\in \R^{m} $, norm estimation $ \norm{\bm{f}}_{2}\leq r $, number of blocks $ L $.
+\ENSURE  Quantized measurements $ \bm{y} \in \lbrace\pm 1\rbrace^{m} $, high dimension thresholds $ \bm{\varphi} \in \R^{m} $
+\\ \textit{Initialisation} : $ \bm{f}_{0}\leftarrow \bm{0} $, $ b = \lfloor\frac{m}{L}\rfloor $, $ \bm{A}^{(i)}\in \R^{b\times m}  $
+\FOR {$i = 1,\cdots,L$}
+\STATE $\bm{\varphi}^{\left(i\right)}\leftarrow \Phi(\bm{A}^{(i)},b,2^{1-t}r,\bm{f}_{i}) $
+\STATE $ \bm{y}^{\left(i\right)} = \text{sign}\left(\bm{A}^{(i)}\bm{f}-\bm{\varphi}^{\left(i\right)}\right)$
+\STATE $ \bm{f}_{i+1}\leftarrow \varDelta\left(\bm{D},\bm{A}^{(i)},\bm{y}^{\left(i\right)},\bm{\varphi}^{\left(i\right)},\bm{r}_{t}\right) $
 \ENDFOR
-\end{algorithmic}
-\caption{pseudocode for not making a pizza}
-\label{alg:seq}
+\RETURN $ \bm{y}^{\left(i\right)},\bm{\varphi}^{\left(i\right)} $ for $ i=1,\cdots,L $
+\end{algorithmic} 
+\caption{$ \mathcal{Q} $: Adaptive Quantization}
+\label{alg:AQ}
+\end{algorithm}
+\end{latin}
+\end{frame}
+
+\begin{frame}
+\frametitle{بازیابی وفقی}
+\begin{latin}
+\begin{algorithm}[H]
+\begin{algorithmic}[1]
+\REQUIRE Dictionary $ \bm{D}\in\R^{n\times N} $,measurement matrix $ \bm{A}\in\R^{m\times n} $,quantized measurements $ \bm{y} \in \lbrace\pm 1\rbrace^{m} $, high dimension thresholds $ \bm{\varphi}\in\R^{m} $, norm estimation $ \norm{\bm{f}}_{2}\leq r $, number of blocks $ L $.
+\ENSURE  Estimated vector $ \hat{\bm{f}}\in \R^{n} $.
+\\ \textit{Initialisation} :  $ b = \lfloor\frac{m}{L}\rfloor $, $ \bm{A}^{(i)}\in \R^{b\times m}$, $ \bm{y}^{\left(i\right)} \lbrace\pm 1\rbrace^{b}$, $\bm{\varphi}^{\left(i\right)}\in \R^{b} $
+\FOR {$i = 1,\cdots,L$}
+\STATE $ \bm{f}_{i}\leftarrow \varDelta\left(\bm{D},\bm{A}^{(i)},\bm{y}^{\left(i\right)},\bm{\varphi}^{\left(i\right)},\bm{r}_{t}\right) $
+\ENDFOR
+\RETURN $ \bm{f}_{L} $
+\end{algorithmic} 
+\caption{$ \mathcal{R} $: Adaptive Recovery}
+\label{alg:AR}
 \end{algorithm}
 \end{latin}
 \end{frame}

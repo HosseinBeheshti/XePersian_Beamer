@@ -1,0 +1,21 @@
+\documentclass{standalone}
+\begin{document}
+\definecolor{cqcqcq}{rgb}{0.7529411764705882,0.7529411764705882,0.7529411764705882}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\draw [color=cqcqcq,, xstep=0.2cm,ystep=0.2cm] (-1.605793228758321,-1.5213590463785178) grid (1.7388138831751547,1.8232480655549579);
+\draw[->,color=black] (-1.605793228758321,0.) -- (1.7388138831751547,0.);
+\foreach \x in {-1.6,-1.4,-1.2,-1.,-0.8,-0.6,-0.4,-0.2,0.2,0.4,0.6,0.8,1.,1.2,1.4,1.6}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[->,color=black] (0.,-1.5213590463785178) -- (0.,1.8232480655549579);
+\foreach \y in {-1.4,-1.2,-1.,-0.8,-0.6,-0.4,-0.2,0.2,0.4,0.6,0.8,1.,1.2,1.4,1.6,1.8}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-1.605793228758321,-1.5213590463785178) rectangle (1.7388138831751547,1.8232480655549579);
+\onslide<24->{
+  \draw (2.8117402502819653,-1.3789356980839753) node[anchor=north west] {$\mathit{d}_{G2}$};
+}
+\onslide<25->{
+  \draw (2.3355361565698582,-0.7012606416475156) node[anchor=north west] {$\mathit{d}_{G1}$};
+}
+\end{tikzpicture}
+\end{document}
