@@ -10,17 +10,112 @@
 \section{حسگری فشرده\hfill}
 
 \begin{frame}
-\frametitle{حسگری فشرده}
+
+\begin{theorem}[نمونه‌برداری شانون-نایکویست]
+اگر بزرگترين مؤلفه فرکانسی موجود در
+$\bm{x}(f)$
+برابر با 
+$f_{max}$
+باشد  و از سيگنال با نرخی بیشتر از 
+$2f_{max}$
+نمونه‌برداری شود، آنگاه سیگنال پیوسته‌ی
+$\bm{x}(t)$
+به طور کامل از روی سیگنال گسسته‌ی
+$\bm{x}[n]$
+قابل بازیابی است.
+\end{theorem}
+\pause
 \begin{figure}
 	\centering
 	\includestandalone[scale=1]{Images/CSfig1}
 \end{figure}
 \end{frame}
 
+
+\begin{frame}
+\frametitle{حسگری فشرده}
+
+\begin{columns} 
+\column{.5\textwidth}
+\begin{figure}
+	\centering
+	\includestandalone[scale=1.1]{Images/CSfig2}
+\end{figure}
+\column{.5\textwidth}
+\only<1>{
+\begin{small}
+\begin{itemize}
+\item{$\bm{x}\in \R^{N}$}
+\item{$\bm{A}\in \R^{m \times N}$}
+\item{$\bm{y}\in \R^{m}$}
+\item{$m \geq C s \log(N/s)$}
+\end{itemize}
+\end{small}
+}
+\only<2>{
+\begin{theorem}[پیگیری پایه‌ها]
+\begin{align}
+\label{eq1}
+\min \norm{\bm{z}}_{1} \quad \text{s.t.}\quad \bm{y}= \bm{A}\bm{z}
+\end{align}
+\end{theorem}
+}
+\end{columns}
+\end{frame}
+
 \begin{frame}
 \frametitle{حسگری فشرده}
 \framesubtitle{حسگری فشرده کوانتیزه}
+\begin{align}
+\label{eq2}
+\bm{y}=\bm{A}\bm{x}
+\end{align}
+\pause
+\begin{block}{}
+\centering
+در بیشتر کاربرد‌های عملی نمونه‌های کوانتیزه در دسترس است.
+\end{block}
+
+\begin{align}
+\label{eq3}
+\bm{y}_{\mathcal{Q}} =A(\bm{y}):= \mathcal{Q}_{B}\left(\bm{A}(\bm{x}+\bm{n})\right)
+\end{align}
+\begin{itemize}
+\item{$\mathcal{Q}_{B}$
+کوانتایزر یکنواخت
+$B$
+بیتی}
+\end{itemize}
+
 \end{frame}
+
+\begin{frame}
+\frametitle{حسگری فشرده}
+\framesubtitle{حسگری فشرده کوانتیزه}
+\begin{itemize}
+\item{محدودیت‌های نمونه‌برداری}
+\begin{itemize}
+\item{مبدل‌های آنالوگ به دیجیتال}
+\item{نرخ انتقال داده}
+\end{itemize}
+\end{itemize}
+
+\pause
+
+\begin{block}{}
+\cite{laska2012regime}
+\begin{align}
+\label{eq5}
+\log_{2}\left( \dfrac{\norm{\bm{x}}_{2}^{2}}{N \sigma^{2}_{\bm{n}}}\right)\approx \dfrac{2\mathfrak{B}}{m}-\log_{2}\left(m\right)
+\end{align}
+\end{block}
+\begin{center}
+$\mathfrak{B}=mB$
+\end{center}
+
+
+\end{frame}
+
 
 \begin{frame}
 \frametitle{حسگری فشرده}

@@ -3,11 +3,21 @@
 %\usetikzlibrary{...}
 \begin{document}
 \begin{tikzpicture}
-\node[inner sep=0pt] (sin) at (3,0)
-    {\includegraphics[scale=0.3]{Images/CS_fig3.eps}};
-\node[inner sep=0pt] (fft_sin) at (-3,0)
-    {\includegraphics[scale=0.25]{Images/CS_fig5.eps}};
-\draw[->,thick] (sin.west) -- (fft_sin.east) node[midway,above] {$F$};
+
+\node at (0,0) (y) {$\bm{y}$};
+\node [right of=y, node distance=2.3cm] (A) {$\bm{A}$};
+\node [right of=A, node distance=2cm] (x) {$\bm{x}$};
+
+\node[below of=y, node distance=1cm] (fig1)
+    {\includegraphics[scale=0.15]{Images/CS_fig6.eps}};
+\node [right of=fig1, node distance=0.3cm] (eq) {$=$};
+
+\node[below of=A, node distance=1cm] (fig2)
+    {\includegraphics[scale=0.25]{Images/CS_fig1.eps}};
+\node [right of=fig2, node distance=1.85cm] (ast) {$\ast$};
+\node[below of=x, node distance=1.65cm] (fig3)
+    {\includegraphics[scale=0.3]{Images/CS_fig2.eps}};
+
 \end{tikzpicture}
 
 \end{document}
