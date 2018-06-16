@@ -1,0 +1,13 @@
+% Tikz File 'mytikz.tex'
+\documentclass{standalone}
+%\usetikzlibrary{...}
+\begin{document}
+\begin{tikzpicture}
+\node[inner sep=0pt] (sin) at (3,0)
+    {\includegraphics[scale=0.3]{Images/CS_fig3.eps}};
+\node[inner sep=0pt] (fft_sin) at (-3,0)
+    {\includegraphics[scale=0.25]{Images/CS_fig5.eps}};
+\draw[->,thick] (sin.west) -- (fft_sin.east) node[midway,above] {$F$};
+\end{tikzpicture}
+
+\end{document}
