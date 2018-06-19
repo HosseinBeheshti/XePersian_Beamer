@@ -166,14 +166,18 @@ $\mathfrak{B}=mB$
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{سیگنال‌های دیکشنری تنک}
+\begin{columns}
+\column{.5\textwidth}
 \begin{figure}
 \centering
-\includegraphics[scale=0.3]{Images/DS.png}
+\includegraphics[scale=0.35]{Images/DS.png}
 \end{figure}
+\column{.5\textwidth}
 \begin{figure}
 \centering
-\includegraphics[scale=0.3]{Images/DS1.png}
+\includegraphics[scale=0.15]{Images/DS1.png}
 \end{figure}
+\end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -221,18 +225,94 @@ $\mu := \max_{1\leq i\neq j\leq N} \dfrac{| \langle d_{i},d_{j}\rangle|}{\norm{d
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{هندسه‌ی ابعاد بالا}
-
+\begin{figure}
+\centering
+\includegraphics[scale=0.2]{Images/width.png}
+\end{figure}
+\begin{align*}
+	\sup_{\bm{u},\bm{v}\in \mathcal{K}} \langle \hat{\bm{n}}, \bm{u}-\bm{v}  \rangle
+\end{align*}
+\begin{align} 
+\tilde{w}\left(\mathcal{K}\right) := \mathbb{E} \sup_{\bm{u},\bm{v}\in \mathcal{K}} \langle \hat{\bm{n}}, \bm{u}-\bm{v}  \rangle
+\end{align} 
+\begin{align*}
+w\left(\mathcal{K}\right) =  \mathbb{E} \norm{\bm{g}}_{2} \tilde{w}\left(\mathcal{K}\right).
+\end{align*} 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{هندسه‌ی ابعاد بالا}
-\framesubtitle{\lr{Random Hyperplane Tessellations}}
-
+\framesubtitle{برش ابرصفحه تصادفی}
+\begin{columns}
+\column{.7\textwidth}
+\begin{figure}
+    \begin{overprint}
+    \onslide<1>\includegraphics[scale=0.3]{Images/gif/1.png}
+    \onslide<2>\includegraphics[scale=0.3]{Images/gif/2.png}
+    \onslide<3>\includegraphics[scale=0.3]{Images/gif/3.png}
+    \onslide<4>\includegraphics[scale=0.3]{Images/gif/4.png}
+    \onslide<5>\includegraphics[scale=0.3]{Images/gif/5.png}
+    \onslide<6-7>\includegraphics[scale=0.3]{Images/gif/6.png}
+    \end{overprint}
+\end{figure}
+\column{.3\textwidth}
+\only<1->{
+\begin{align*}
+y_{i} = \text{sign}(\langle\bm{a}_{i}, \bm{x}\rangle)
+\end{align*}
+}
+\begin{itemize}
+\only<1->{\item{$\bm{x}\in S^{n-1}$}}
+\only<2->{\item{$y_{1}$}}
+\only<3->{\item{$y_{2}$}}
+\only<4->{\item{$y_{3}$}}
+\only<5->{\item{$y_{4}$}}
+\end{itemize}
+\only<6>{
+\begin{block}{}
+\begin{center}
+$\norm{\bm{u}-\bm{v}}_{2}\leq ?$\\
+$ m=?$
+\end{center}
+\end{block}
+}
+\only<7>{
+\begin{block}{}
+\begin{center}
+$\norm{\bm{u}-\bm{v}}_{2}\leq \delta $\\
+$ m \geq C \delta^{-6} w\left(\mathcal{K}\right)^{2} $
+\end{center}
+\end{block}
+}
+\end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{هندسه‌ی ابعاد بالا}
-\framesubtitle{\lr{Random Hyperplane Tessellations}}
+\framesubtitle{برش ابرصفحه تصادفی}
+\begin{small}
+\begin{theorem}[برش ابرصفحه تصادفی سیگنال دیکشنری تنک]
+اگر
+$ \mathcal{K}_{s}:= \left(\mathbf{D}^{\ast}\right)^{-1}\left(\Sigma_{s}^{N,\text{eff}}\right)\cap S^{n-1} $
+و
+\begin{align*}
+	m \geq C \epsilon^{-6} s \log\left(N/s\right)
+\end{align*}
+با احتمال
+$1-\gamma\exp(-c\epsilon^{2}m)$
+برای دو سیگنال 
+$\bm{f},\bm{g}\in \mathcal{K}_{s}$
+که در آن
+\begin{align}
+\text{sign}(\langle \bm{a}_i,\bm{f}\rangle)=\text{sign}(\langle \bm{a}_i,\bm{g}\rangle)
+\end{align}
+باشد، داریم
+\begin{align}
+\|\bm{f}-\bm{g}\|_{2}\leq \epsilon
+\end{align}
+\end{theorem}
+\end{small}
+\cite{Baraniuk2017}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -242,16 +322,18 @@ $\mu := \max_{1\leq i\neq j\leq N} \dfrac{| \langle d_{i},d_{j}\rangle|}{\norm{d
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{مدل سیستم}
-
 \begin{figure}
 	\centering
 	\includestandalone[scale=0.6]{Images/AdaptiveBD}
 \end{figure}
 
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{بازیابی تک مرحله‌ای}
+\begin{block}{}
+\begin{align*}
+\label{eq:SSR}
+ \bm{f}_{\varDelta}~=~\mathop{\arg\min}_{\bm{h}\in \R^{n} } \norm{\bm{D}^{*}\bm{h}}_{1}\quad \text{s.t.} \quad   \bm{y} =& \text{sign}\left(\bm{A}^{(i)}\bm{h}-\bm{\varphi}^{(i)} \right), \\
+  & \norm{\bm{h}}_{2}\leq  r_t,
+\end{align*}
+\end{block}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -269,6 +351,16 @@ $\mu := \max_{1\leq i\neq j\leq N} \dfrac{| \langle d_{i},d_{j}\rangle|}{\norm{d
 		\STATE  $ \bm{\varphi}=\bm{A}\hat{\bm{f}}+\bm{\tau} $
 	\end{algorithmic} 
 \end{algorithm}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{آستانه‌ی ابعاد بالا}
+\begin{small}
+\begin{align*}
+\bm{y}^{(t)}= \text{sign}\left( \bm{A}^{(t)}\bm{f}- \bm{\varphi}^{(t)}\right) =& \text{sign}\left( \bm{A}^{(t)}\bm{f}- \bm{A}^{(t)}\bm{f}_{t-1}-\bm{\tau}^{(t)}\right) \\
+=&\text{sign}\left( \bm{A}^{(t)}\left(\bm{f}-\bm{f}_{t-1}\right)-\bm{\tau}^{(t)}\right)
+\end{align*}
+\end{small}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
