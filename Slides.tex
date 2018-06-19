@@ -8,7 +8,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{حسگری فشرده\hfill}
-%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 
 \begin{theorem}[نمونه‌برداری شانون-نایکویست]
@@ -30,8 +30,7 @@ $\bm{x}[n]$
 	\includestandalone[scale=1]{Images/CSfig1}
 \end{figure}
 \end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{حسگری فشرده}
 
@@ -62,7 +61,7 @@ $\bm{x}[n]$
 }
 \end{columns}
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{حسگری فشرده}
 \framesubtitle{حسگری فشرده کوانتیزه}
@@ -86,11 +85,23 @@ $\bm{x}[n]$
 $B$
 بیتی}
 \end{itemize}
+
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{حسگری فشرده}
 \framesubtitle{حسگری فشرده کوانتیزه}
+\begin{itemize}
+\item{محدودیت‌های نمونه‌برداری}
+\begin{itemize}
+\item{مبدل‌های آنالوگ به دیجیتال}
+\item{نرخ انتقال داده}
+\end{itemize}
+\end{itemize}
+\pause
+\begin{columns} 
+\column{.5\textwidth}
+
 \begin{block}{}
 \begin{align}
 \label{eq5}
@@ -100,84 +111,135 @@ $B$
 \begin{center}
 $\mathfrak{B}=mB$
 \end{center}
+\column{.5\textwidth}
+\pause
+\begin{itemize}
+\item{سیگنال قوی: $m\downarrow~ B \uparrow$}
+\item{سیگنال ضعیف: $m\uparrow~ B \downarrow$}
+\end{itemize}
+\end{columns}
 \cite{laska2012regime}
-\pause
-\begin{itemize}
-\item{
-سیگنال‌های قوی}
-\item{
-سیگنال‌های ضعیف}
-\end{itemize}
-\pause
-\begin{itemize}
-\item{محدودیت‌های نمونه‌برداری}
-\begin{itemize}
-\item{مبدل‌های آنالوگ به دیجیتال}
-\item{نرخ انتقال داده}
-\end{itemize}
-\end{itemize}
 \end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{حسگری فشرده}
 \framesubtitle{حسگری فشرده تک بیتی}
+\begin{small}
+\begin{align}
+\label{eq6}
+\bm{y}= \text{sign}\left(\bm{A}\bm{x}\right)
+\end{align}
+\end{small}
+\begin{itemize}
+\item{
+پیاده‌سازی آسان، حجم داده‌ی کم
+}
+\end{itemize}
+\pause
+\begin{columns}
+\column{.33\textwidth}
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.1]{Images/App_fig1.eps}
+\end{figure}
+\column{.33\textwidth}
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.15]{Images/App_fig2.eps}
+\end{figure}
+\column{.33\textwidth}
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.22]{Images/App_fig3.eps}
+\end{figure}
+\end{columns}
+
+\begin{scriptsize}
+\cite{risi2014massive}
+\end{scriptsize}
 \end{frame}
-
-\begin{frame}
-\frametitle{حسگری فشرده}
-\framesubtitle{حسگری فشرده تک بیتی}
-\end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
-
 \section{سیگنال‌های دیکشنری تنک\hfill}
-
+%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{سیگنال‌های دیکشنری تنک}
-
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{Images/DS.png}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{Images/DS1.png}
+\end{figure}
 \end{frame}
-
+%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{سیگنال‌های دیکشنری تنک}
+\begin{align}
+\label{eq7}
+\bm{f} = \bm{D}\bm{x}
+\end{align}
+\begin{columns}
+\column{.33\textwidth}
+\begin{center}
+$\bm{x}\in \R^{N}$
+\end{center}
+\column{.33\textwidth}
+\begin{center}
+$\bm{D}\in \R^{n\times N}$
+\end{center}
+\column{.33\textwidth}
+\begin{center}
+$\bm{f}\in \R^{n}$
+\end{center}
+\end{columns}
 
+\begin{columns}
+\column{.5\textwidth}
+\begin{block}{}
+$\mu := \max_{1\leq i\neq j\leq N} \dfrac{| \langle d_{i},d_{j}\rangle|}{\norm{d_{i}}_{2}\norm{d_{j}}_{2}}$
+\end{block}
+\column{.5\textwidth}
+\begin{itemize}
+\item{
+تنک-ترکیبی
+}
+\item{
+تنک-تحلیلی
+}
+\end{itemize}
+\end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
-
 \section{هندسه‌ی ابعاد بالا\hfill}
-
+%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{هندسه‌ی ابعاد بالا}
 
 \end{frame}
-
-\begin{frame}
-\frametitle{هندسه‌ی ابعاد بالا}
-\framesubtitle{\lr{Random Hyperplane Tessellations}}
-
-\end{frame}
-
+%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{هندسه‌ی ابعاد بالا}
 \framesubtitle{\lr{Random Hyperplane Tessellations}}
-\end{frame}
 
-\begin{frame}{Embedded Animation}
-  \animategraphics[autoplay,loop]{1}{Images/gif/frame-}{1}{5}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{هندسه‌ی ابعاد بالا}
+\framesubtitle{\lr{Random Hyperplane Tessellations}}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%
 \section{الگوریتم پیشنهادی\hfill}
-
+%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{مدل سیستم}
 
@@ -187,71 +249,70 @@ $\mathfrak{B}=mB$
 \end{figure}
 
 \end{frame}
-
+%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{بازیابی تک مرحله‌ای}
 
 \end{frame}
-
+%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{آستانه‌ی ابعاد بالا}
-\begin{latin}
 \begin{algorithm}[H]
-\begin{algorithmic}[1]
-\renewcommand{\algorithmicrequire}{\textbf{Input:}}
-\renewcommand{\algorithmicensure}{\textbf{Output:}}
-\REQUIRE Mapping matrix $ \bm{A} $, number of measurements $ b $, dithers variance $ \sigma^{2} $, signal estimation $ \hat{\bm{f}} $.
-\ENSURE High dimension threshold vector $\bm{\varphi}\in \R^{b}$.
-\STATE $ \bm{\tau}\sim N(0,\sigma^{2}\bm{I}_{b} ) $
-\STATE  $ \bm{\varphi}=\bm{A}\hat{\bm{f}}+\bm{\tau} $
-\RETURN $ \bm{\varphi} $
-\end{algorithmic} 
-\caption{ $\Phi$ : High dimension threshold generator}
-\label{alg:HDTG}
+	\caption{$ \Phi $: مولد آستانه در ابعاد بالا}
+	\label{alg:HDTG}
+	\begin{algorithmic}[1]
+		\renewcommand{\algorithmicrequire}{\textbf{ورودی:}}
+		\renewcommand{\algorithmicensure}{\textbf{خروجی:}}
+		\REQUIRE ماتریس اندازه‌گیری $ \bm{A} $, تعداد نمونه‌ها $ b $, واریانس لغزش‌ها $ \sigma^{2} $, سیگنال تخمینی $ \hat{\bm{f}} $.
+		\ENSURE بردار آستانه در ابعاد بالا $\bm{\varphi}\in \R^{b}$.
+		\STATE $ \bm{\tau}\sim N(0,\sigma^{2}\bm{I}_{b} ) $
+		\STATE  $ \bm{\varphi}=\bm{A}\hat{\bm{f}}+\bm{\tau} $
+	\end{algorithmic} 
 \end{algorithm}
-\end{latin}
 \end{frame}
-
+%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{نمونه‌برداری وفقی}
-\begin{latin}
 \begin{algorithm}[H]
-\begin{algorithmic}[1]
-\REQUIRE Dictionary $ \bm{D}\in\R^{n\times N} $,measurement matrix $ \bm{A}\in\R^{m\times n} $, linear measurement $ \bm{Af}\in \R^{m} $, norm estimation $ \norm{\bm{f}}_{2}\leq r $, number of blocks $ L $.
-\ENSURE  Quantized measurements $ \bm{y} \in \lbrace\pm 1\rbrace^{m} $, high dimension thresholds $ \bm{\varphi} \in \R^{m} $
-\\ \textit{Initialisation} : $ \bm{f}_{0}\leftarrow \bm{0} $, $ b = \lfloor\frac{m}{L}\rfloor $, $ \bm{A}^{(i)}\in \R^{b\times m}  $
-\FOR {$i = 1,\cdots,L$}
-\STATE $\bm{\varphi}^{\left(i\right)}\leftarrow \Phi(\bm{A}^{(i)},b,2^{1-t}r,\bm{f}_{i}) $
-\STATE $ \bm{y}^{\left(i\right)} = \text{sign}\left(\bm{A}^{(i)}\bm{f}-\bm{\varphi}^{\left(i\right)}\right)$
-\STATE $ \bm{f}_{i+1}\leftarrow \varDelta\left(\bm{D},\bm{A}^{(i)},\bm{y}^{\left(i\right)},\bm{\varphi}^{\left(i\right)},\bm{r}_{t}\right) $
-\ENDFOR
-\RETURN $ \bm{y}^{\left(i\right)},\bm{\varphi}^{\left(i\right)} $ for $ i=1,\cdots,L $
-\end{algorithmic} 
-\caption{$ \mathcal{Q} $: Adaptive Quantization}
-\label{alg:AQ}
+	\caption{$ \mathcal{Q} $: نمونه‌برداری وفقی}
+	\label{alg:AQ}
+	\begin{algorithmic}[1]
+		\renewcommand{\algorithmicrequire}{\textbf{ورودی:}}
+		\renewcommand{\algorithmicensure}{\textbf{خروجی:}}
+		\REQUIRE دیکشنری $ \bm{D}\in\R^{n\times N} $, ماتریس نمونه‌برداری $ \bm{A}\in\R^{m\times n} $, مشاهدات خطی $ \bm{Af}\in \R^{m} $, تخمین نورم $ \norm{\bm{f}}_{2}\leq r $, تعداد بلوک‌ها $ L $.
+		\ENSURE  نمونه‌های کوانتیزه $ \bm{y} \in \lbrace\pm 1\rbrace^{m} $, آستانه‌ها در ابعاد بالا $ \bm{\varphi} \in \R^{m} $
+		\\ \textit{مقدار‌دهی اولیه} : $ \bm{f}_{0}\leftarrow \bm{0} $, $ b = \lfloor\frac{m}{L}\rfloor $, $ \bm{A}^{(i)}\in \R^{b\times m}  $
+		\begin{latin}
+		\FOR {$i = 1,\cdots,L$}
+		\STATE $r_{t}=2^{1-t}r$
+		\STATE $\bm{\varphi}^{\left(i\right)}\leftarrow \Phi(\bm{A}^{(i)},b,2^{1-t}r,\bm{f}_{i-1}) $
+		\STATE $ \bm{y}^{\left(i\right)} = \text{sign}\left(\bm{A}^{(i)}\bm{f}-\bm{\varphi}^{\left(i\right)}\right)$
+		\STATE $ \bm{f}_{i} = \bm{f}_{i-1} + \varDelta\left(\bm{D},\bm{A}^{(i)},\bm{y}^{\left(i\right)},\bm{\varphi}^{\left(i\right)},\bm{r}_{t}\right) $
+		\ENDFOR
+		\end{latin}
+	\end{algorithmic} 
 \end{algorithm}
-\end{latin}
 \end{frame}
-
+%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{بازیابی وفقی}
-\begin{latin}
 \begin{algorithm}[H]
-\begin{algorithmic}[1]
-\REQUIRE Dictionary $ \bm{D}\in\R^{n\times N} $,measurement matrix $ \bm{A}\in\R^{m\times n} $,quantized measurements $ \bm{y} \in \lbrace\pm 1\rbrace^{m} $, high dimension thresholds $ \bm{\varphi}\in\R^{m} $, norm estimation $ \norm{\bm{f}}_{2}\leq r $, number of blocks $ L $.
-\ENSURE  Estimated vector $ \hat{\bm{f}}\in \R^{n} $.
-\\ \textit{Initialisation} :  $ b = \lfloor\frac{m}{L}\rfloor $, $ \bm{A}^{(i)}\in \R^{b\times m}$, $ \bm{y}^{\left(i\right)} \lbrace\pm 1\rbrace^{b}$, $\bm{\varphi}^{\left(i\right)}\in \R^{b} $
-\FOR {$i = 1,\cdots,L$}
-\STATE $ \bm{f}_{i}\leftarrow \varDelta\left(\bm{D},\bm{A}^{(i)},\bm{y}^{\left(i\right)},\bm{\varphi}^{\left(i\right)},\bm{r}_{t}\right) $
-\ENDFOR
-\RETURN $ \bm{f}_{L} $
-\end{algorithmic} 
-\caption{$ \mathcal{R} $: Adaptive Recovery}
-\label{alg:AR}
+	\caption{$ \mathcal{R} $: بازیابی وفقی}
+	\label{alg:AR}
+	\begin{algorithmic}[1]
+		\renewcommand{\algorithmicrequire}{\textbf{ورودی:}}
+		\renewcommand{\algorithmicensure}{\textbf{خروجی:}}
+		\REQUIRE دیکشنری $ \bm{D}\in\R^{n\times N} $, ماتریس نمونه‌برداری $ \bm{A}\in\R^{m\times n} $, نمونه‌های کوانتیزه $ \bm{y} \in \lbrace\pm 1\rbrace^{m} $, آستانه‌ها در ابعاد بالا $ \bm{\varphi}\in\R^{m} $, تخمین نورم $ \norm{\bm{f}}_{2}\leq r $, تعداد بلوک‌ها $ L $.
+		\ENSURE  تخمین سیگنال $ \hat{\bm{f}}\in \R^{n} $.
+		\\ \textit{مقداردهی اولیه} :  $ b = \lfloor\frac{m}{L}\rfloor $, $ \bm{A}^{(i)}\in \R^{b\times m}$, $ \bm{y}^{\left(i\right)} \lbrace\pm 1\rbrace^{b}$, $\bm{\varphi}^{\left(i\right)}\in \R^{b} $
+		\begin{latin}
+		\FOR {$i = 1,\cdots,L$}
+		\STATE $ \bm{f}_{i} =\bm{f}_{i-1}+ \varDelta\left(\bm{D},\bm{A}^{(i)},\bm{y}^{\left(i\right)},\bm{\varphi}^{\left(i\right)},\bm{r}_{t}\right) $ 
+		\ENDFOR
+		\end{latin}
+	\end{algorithmic} 
 \end{algorithm}
-\end{latin}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
