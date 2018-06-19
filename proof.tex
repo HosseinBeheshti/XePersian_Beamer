@@ -1,0 +1,42 @@
+\begin{frame}[allowframebreaks]
+\begin{align}
+\bm{y}^{(t)}= \text{sign}\left( \bm{A}^{(t)}\bm{f}- \bm{\varphi}^{(t)}\right) =& \text{sign}\left( \bm{A}^{(t)}\bm{f}- \bm{A}^{(t)}\bm{f}_{t-1}-\bm{\tau}^{(t)}\right) \\
+=&\text{sign}\left( \bm{A}^{(t)}\left(\bm{f}-\bm{f}_{t-1}\right)-\bm{\tau}^{(t)}\right)
+\end{align}
+\begin{align}
+\bm{f}^{\prime}=\bm{f}-\bm{f}_{t-1}
+\end{align}
+\begin{align}
+\| \bm{D}^{\ast}\bm{f}^{\prime}\|_{0} = \| \bm{D}^{\ast}\left(\bm{f}-\bm{f}_{t-1}\right)\|_{0} =&  \| \bm{D}^{\ast}\bm{f}-\bm{D}^{\ast}\bm{f}_{t-1}\|_{0}\leq 2s 
+\end{align}
+
+
+\begin{align}
+m \geq C(r/\sigma+\sigma/r)^{6}(r^{2}/\sigma^{2}+1)(\epsilon+2)^{-6} s \log(N/s)
+\end{align}
+
+\begin{align}
+1-\gamma \exp((-c^{\prime} b (\epsilon-2)^{2} r^{2}\sigma^{2})/(r^{2}+\sigma^{2})^{2})
+\end{align}
+
+\begin{align}
+\| \bm{f}-\bm{f}_{t-1}-f_{\varDelta}\|_{2}\leq (\epsilon-2) r_{t}.
+\end{align}
+
+\begin{align}
+\bm{z}=\bm{f}_{t-1}+f_{\varDelta}
+\end{align}
+
+\begin{align}
+\| \bm{f}-\bm{f}_{t}\|_{2} \leq & \| \bm{f}-\bm{z}\|_{2} + \| \bm{f}_{t}-\bm{z}\|_{2}\\
+\leq & (\epsilon-2) r_{t} + \| \bm{f}_{t}-\bm{f}_{t-1}\|_{2} + \| \bm{f}_{t-1}-\bm{z}\|_{2}
+\end{align}
+
+\begin{block}{}
+\begin{align}
+\| \bm{f}-\bm{f}_{t}\|_{2} \leq (\epsilon-2) r_{t} +2r_{t}= \epsilon r_{t} = \epsilon r 2^{1-t}
+\end{align}
+\end{block}
+
+
+\end{frame}
