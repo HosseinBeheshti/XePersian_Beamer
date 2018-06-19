@@ -10,28 +10,6 @@
 \section{حسگری فشرده\hfill}
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-
-\begin{theorem}[نمونه‌برداری شانون-نایکویست]
-اگر بزرگترين مؤلفه فرکانسی موجود در
-$\bm{x}(f)$
-برابر با 
-$f_{max}$
-باشد  و از سيگنال با نرخی بیشتر از 
-$2f_{max}$
-نمونه‌برداری شود، آنگاه سیگنال پیوسته‌ی
-$\bm{x}(t)$
-به طور کامل از روی سیگنال گسسته‌ی
-$\bm{x}[n]$
-قابل بازیابی است.
-\end{theorem}
-\pause
-\begin{figure}
-	\centering
-	\includestandalone[scale=1]{Images/CSfig1}
-\end{figure}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
 \frametitle{حسگری فشرده}
 
 \begin{columns} 
@@ -225,19 +203,32 @@ $\mu := \max_{1\leq i\neq j\leq N} \dfrac{| \langle d_{i},d_{j}\rangle|}{\norm{d
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{هندسه‌ی ابعاد بالا}
+\begin{columns}
+\column{.5\textwidth}
 \begin{figure}
 \centering
-\includegraphics[scale=0.2]{Images/width.png}
+\includegraphics[scale=0.23]{Images/width.png}
 \end{figure}
+\column{.5\textwidth}
 \begin{align*}
-	\sup_{\bm{u},\bm{v}\in \mathcal{K}} \langle \hat{\bm{n}}, \bm{u}-\bm{v}  \rangle
+	d := \sup_{\bm{u},\bm{v}\in \mathcal{K}} \langle \hat{\bm{n}}, \bm{u}-\bm{v}  \rangle
 \end{align*}
-\begin{align} 
+\begin{align*} 
 \tilde{w}\left(\mathcal{K}\right) := \mathbb{E} \sup_{\bm{u},\bm{v}\in \mathcal{K}} \langle \hat{\bm{n}}, \bm{u}-\bm{v}  \rangle
-\end{align} 
-\begin{align*}
-w\left(\mathcal{K}\right) =  \mathbb{E} \norm{\bm{g}}_{2} \tilde{w}\left(\mathcal{K}\right).
 \end{align*} 
+با فرض بردار جهت گوسی:
+\begin{align*}
+w\left(\mathcal{K}\right) =  \mathbb{E} \norm{\bm{g}}_{2} \tilde{w}\left(\mathcal{K}\right)
+\end{align*} 
+\begin{itemize}
+\item{$\mathcal{K}$
+:مجموعه سیگنال‌های $s$-تنک
+\begin{align*}
+w\left(\mathcal{K}\right) = Cs \log\left(2n/s\right)
+\end{align*}
+}
+\end{itemize}
+\end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -355,12 +346,24 @@ $\bm{f},\bm{g}\in \mathcal{K}_{s}$
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{آستانه‌ی ابعاد بالا}
-\begin{small}
+\begin{columns}
+\column{.3\textwidth}
+\begin{scriptsize}
 \begin{align*}
-\bm{y}^{(t)}= \text{sign}\left( \bm{A}^{(t)}\bm{f}- \bm{\varphi}^{(t)}\right) =& \text{sign}\left( \bm{A}^{(t)}\bm{f}- \bm{A}^{(t)}\bm{f}_{t-1}-\bm{\tau}^{(t)}\right) \\
+\bm{y}^{(t)}=& \text{sign}\left( \bm{A}^{(t)}\bm{f}- \bm{\varphi}^{(t)}\right) \\
+=& \text{sign}\left( \bm{A}^{(t)}\bm{f}- \bm{A}^{(t)}\bm{f}_{t-1}-\bm{\tau}^{(t)}\right) \\
 =&\text{sign}\left( \bm{A}^{(t)}\left(\bm{f}-\bm{f}_{t-1}\right)-\bm{\tau}^{(t)}\right)
 \end{align*}
-\end{small}
+\end{scriptsize}
+\column{.7\textwidth}
+\begin{figure}
+    \begin{overprint}
+    \onslide<1>\includegraphics[scale=0.5]{Images/polyhdr1.eps}
+    \onslide<2>\includegraphics[scale=0.5]{Images/polyhdr2.eps}
+    \onslide<3>\includegraphics[scale=0.5]{Images/polyhdr3.eps}
+    \end{overprint}
+\end{figure}
+\end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -406,6 +409,54 @@ $\bm{f},\bm{g}\in \mathcal{K}_{s}$
 \end{algorithm}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{کران خطا}
+\begin{theorem}
+با فرض دریافت
+\begin{align}
+ m \geq C(r/\sigma+\sigma / r)^{6}(r^{2}/\sigma^2+1)(\epsilon+2)^{-6}s \log (N/s) 
+\end{align} 
+نمونه با استفاده از الگوریتم نمونه‌برداری وفقی
+(الگوریتم\ref{alg:AQ})
+با احتمال 
+\begin{align}
+ 1-\gamma \exp{(-c^{\prime}m (\epsilon+2)^{2} r^2\sigma^2/ (r^2+\sigma^2)^2)} 
+\end{align}
+خروجی الگوریتم بازیابی وفقی
+(الگوریتم\ref{alg:AR}) 
+در شرط  
+\begin{align}
+\|\bm{f}-\hat{\bm{f}}\|_{2}\leq \epsilon r2^{1-L},
+\end{align}
+صدق می‌کند.
+\end{theorem}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{تعبیر شهودی}
+\begin{itemize}
+\item{تصویر بر نیم‌کره}
+\end{itemize}
+\begin{columns}
+\column{.5\textwidth}
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.15]{Images/HP1.png}
+\end{figure}
+\column{.5\textwidth}
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.15]{Images/HP2.png}
+\end{figure}
+\end{columns}
+
+\begin{align}
+P_{H}(\tilde{\bm{f}}) = \dfrac{\tilde{\bm{f}}}{\|\tilde{\bm{f}}\|_{2}}\quad \quad \tilde{\bm{f}}:= [\bm{f}^{T}~|~\sigma]^{T}\in \R^{N+1}
+\end{align}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -414,9 +465,25 @@ $\bm{f},\bm{g}\in \mathcal{K}_{s}$
 
 \begin{frame}
 \frametitle{نتایج شبیه‌سازی}
-\framesubtitle{مقایسه‌ی الگوریتم‌ها}
+\begin{align*}
+N= 1000, \quad n= 50, \quad s= 10, \quad L=10
+\end{align*}
+\begin{figure}
+	\centering
+	\includestandalone[scale=0.5]{Images/SimFig1}
+\end{figure}
 \end{frame}
-
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{نتایج شبیه‌سازی}
+\begin{align*}
+N= 1000, \quad n= 50, \quad s= 10,20,30,40,50 \quad L=10
+\end{align*}
+\begin{figure}
+	\centering
+	\includestandalone[scale=0.5]{Images/SimFig2}
+\end{figure}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
