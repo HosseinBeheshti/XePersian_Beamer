@@ -55,7 +55,7 @@
 
 \begin{align}
 \label{eq3}
-\bm{y}_{\mathcal{Q}} =A(\bm{y}):= \mathcal{Q}_{B}\left(\bm{A}(\bm{x}+\bm{n})\right)
+\bm{y}_{\mathcal{Q}} = \mathcal{Q}_{B}\left(\bm{A}(\bm{x}+\bm{n})\right)
 \end{align}
 \begin{itemize}
 \item{$\mathcal{Q}_{B}$
@@ -133,7 +133,7 @@ $\mathfrak{B}=mB$
 \end{columns}
 
 \begin{scriptsize}
-\cite{risi2014massive}
+\cite{risi2014massive,plan2013robust,baraniuk2017exponential}
 \end{scriptsize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -144,22 +144,34 @@ $\mathfrak{B}=mB$
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{سیگنال‌های دیکشنری تنک}
+\begin{block}{}
+\begin{center}
+در بسیاری از کاربرد‌ها، سیگنال در یک دیکشنری تنک است.
+\end{center}
+\end{block}
 \begin{columns}
 \column{.5\textwidth}
 \begin{figure}
 \centering
-\includegraphics[scale=0.35]{Images/DS.png}
+\includegraphics[scale=0.3]{Images/DS.png}
 \end{figure}
+\begin{scriptsize}
+\cite{nam2013cosparse,Candes2011}
+\end{scriptsize}
 \column{.5\textwidth}
 \begin{figure}
 \centering
-\includegraphics[scale=0.15]{Images/DS1.png}
+\includegraphics[scale=0.13]{Images/DS1.png}
 \end{figure}
 \end{columns}
 \end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{سیگنال‌های دیکشنری تنک}
+\begin{itemize}
+\item{$\|\bm{x}\|_{0}\leq s$}
+\end{itemize}
 \begin{align}
 \label{eq7}
 \bm{f} = \bm{D}\bm{x}
@@ -188,9 +200,13 @@ $\mu := \max_{1\leq i\neq j\leq N} \dfrac{| \langle d_{i},d_{j}\rangle|}{\norm{d
 \begin{itemize}
 \item{
 تنک-ترکیبی
+\quad
+$\bm{f}= \bm{D}\bm{x}$
 }
 \item{
 تنک-تحلیلی
+\quad
+$\bm{D}^{\ast}\bm{f}$
 }
 \end{itemize}
 \end{columns}
@@ -209,10 +225,10 @@ $\mu := \max_{1\leq i\neq j\leq N} \dfrac{| \langle d_{i},d_{j}\rangle|}{\norm{d
 \centering
 \includegraphics[scale=0.23]{Images/width.png}
 \end{figure}
-\column{.5\textwidth}
 \begin{align*}
 	d := \sup_{\bm{u},\bm{v}\in \mathcal{K}} \langle \hat{\bm{n}}, \bm{u}-\bm{v}  \rangle
 \end{align*}
+\column{.5\textwidth}
 \begin{align*} 
 \tilde{w}\left(\mathcal{K}\right) := \mathbb{E} \sup_{\bm{u},\bm{v}\in \mathcal{K}} \langle \hat{\bm{n}}, \bm{u}-\bm{v}  \rangle
 \end{align*} 
@@ -284,7 +300,7 @@ $ m \geq C \delta^{-6} w\left(\mathcal{K}\right)^{2} $
 \begin{small}
 \begin{theorem}[برش ابرصفحه تصادفی سیگنال دیکشنری تنک]
 اگر
-$ \mathcal{K}_{s}:= \left(\mathbf{D}^{\ast}\right)^{-1}\left(\Sigma_{s}^{N,\text{eff}}\right)\cap S^{n-1} $
+$ \mathcal{K}_{s}:= \left(\mathbf{D}^{\ast}\right)^{-1}\left(\Sigma_{s}^{N}\right)\cap S^{n-1} $
 و
 \begin{align*}
 	m \geq C \epsilon^{-6} s \log\left(N/s\right)
@@ -362,6 +378,32 @@ $\bm{f},\bm{g}\in \mathcal{K}_{s}$
     \onslide<2>\includegraphics[scale=0.5]{Images/polyhdr2.eps}
     \onslide<3>\includegraphics[scale=0.5]{Images/polyhdr3.eps}
     \end{overprint}
+\end{figure}
+\end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{block}{}
+\begin{center}
+تفاوت آستانه‌ی تصادفی معمولی با آستانه‌ی تصادفی ابعاد بالا
+\end{center}
+\end{block}
+\begin{columns}
+\column{.5\textwidth}
+\begin{align*}
+ \bm{y}^{\left(i\right)} = \text{sign}\left(\bm{A}^{(i)}\bm{f}-\bm{\tau}^{\left(i\right)}\right)
+\end{align*}
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{Images/HDT1.png}
+\end{figure}
+\column{.5\textwidth}
+\begin{align*}
+ \bm{y}^{\left(i\right)} = \text{sign}\left(\bm{A}^{(i)}\bm{f}-\bm{\varphi}^{\left(i\right)}\right)
+\end{align*}
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{Images/HDT2.png}
 \end{figure}
 \end{columns}
 \end{frame}
@@ -485,6 +527,14 @@ N= 1000, \quad n= 50, \quad s= 10, \quad L=10
 \begin{figure}
 	\centering
 	\includegraphics[scale=0.45]{Images/simfig1.eps}
+\end{figure}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{نتایج شبیه‌سازی}
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{Images/eer.eps}
 \end{figure}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%
